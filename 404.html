@@ -4,13 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Not Found Page</title>
+  <script type="text/javascript">
+    var segmentCount = 1;
+    var l = window.location;
+    l.replace(
+      l.protocol +
+        "//" +
+        l.hostname +
+        (l.port ? ":" + l.port : "") +
+        l.pathname
+          .split("/")
+          .slice(0, 1 + segmentCount)
+          .join("/") +
+        "/?p=/" +
+        l.pathname
+          .slice(1)
+          .split("/")
+          .slice(segmentCount)
+          .join("/")
+          .replace(/&/g, "~and~") +
+        (l.search ? "&q=" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+        l.hash,
+    );
+  </script>
 </head>
 <body>
   <h1>404 Not Found</h1>
   <p>리다이렉트중 ...</p>
-  
-  <script>
-    window.location.href = "/front_5th_chapter1-2";
-  </script>
 </body>
 </html>
